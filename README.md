@@ -10,6 +10,6 @@ ORGANIZATIONAL_UNIT_ID=ou-vw2z-8xc77syq \
 
 
 #TODO: 
-put into git
 service control policy for OU
+#TODO: 
 README
