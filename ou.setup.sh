@@ -3,6 +3,7 @@ set -e
 
 ORGANIZATIONAL_UNIT_NAME=$1
 
+#TODO: Create OU
 
 #TODO:: Move all accounts from root to OU
 
