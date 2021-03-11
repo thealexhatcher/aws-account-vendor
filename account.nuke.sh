@@ -3,16 +3,12 @@ set -e
 
 ACCOUNT_ID=$1  
 
-###
-# Nuke
-###
-
 #assume member account admin role
 AWS_SESSION=$(aws sts assume-role --role-arn arn:aws:iam::$ACCOUNT_ID:role/OrganizationAccountAccessRole --role-session-name aws-account-vendor --output json)
 AWS_ACCESS_KEY_ID=$(echo $AWS_SESSION | jq -r .Credentials.AccessKeyId )
 AWS_SECRET_ACCESS_KEY=$(echo $AWS_SESSION | jq -r .Credentials.SecretAccessKey )
 AWS_SESSION_TOKEN=$(echo $AWS_SESSION | jq -r .Credentials.SessionToken )
-
+#Nuke Account Resources
 cat << EOF > $ACCOUNT_ID.nuke.yml
 ---
 regions:
@@ -35,11 +31,8 @@ aws-nuke --config $ACCOUNT_ID.nuke.yml \
   --force \
   --no-dry-run 
 rm -f $ACCOUNT_ID.nuke.yml
-
-###
-# Show Results
-###
-
-#TODO: update accounts.aws.json
-
+#delete account alias
+echo "deleting aws member account alias..."
+aws iam delete-account-alias --account-alias aws-$ACCOUNT_ID --profile $ACCOUNT_ID
+echo "done."
 

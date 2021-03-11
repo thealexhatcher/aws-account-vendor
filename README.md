@@ -1,15 +1,20 @@
-# aws-account-vending-machine
+# aws-account-vendor
 
+## create new aws organization
 
+make org 
 
-ACCOUNT_NAME=$(uuid | tr -d "-") \
-ACCOUNT_EMAIL=alexhatcher+$ACCOUNT_NAME@gmail.com \
-ORGANIZATIONAL_UNIT_ID=ou-vw2z-8xc77syq \
-./account.member.setup.sh $ACCOUNT_NAME $ACCOUNT_EMAIL $ORGANIZATIONAL_UNIT_ID
+## create new aws accounts
 
+make account
 
+## setup ou with new aws accounts
 
-#TODO: 
-service control policy for OU
-#TODO: 
-README
+make ou
+make ou-setup
+
+## remove resources from aws accounts
+
+make ou-nuke
+make ou-delete
+
