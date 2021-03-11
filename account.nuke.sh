@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e 
-
 ACCOUNT_ID=$1  
-
 #assume member account admin role
 AWS_SESSION=$(aws sts assume-role --role-arn arn:aws:iam::$ACCOUNT_ID:role/OrganizationAccountAccessRole --role-session-name aws-account-vendor --output json)
 AWS_ACCESS_KEY_ID=$(echo $AWS_SESSION | jq -r .Credentials.AccessKeyId )
@@ -34,5 +32,3 @@ rm -f $ACCOUNT_ID.nuke.yml
 #delete account alias
 echo "deleting aws member account alias..."
 aws iam delete-account-alias --account-alias aws-$ACCOUNT_ID --profile $ACCOUNT_ID
-echo "done."
-
