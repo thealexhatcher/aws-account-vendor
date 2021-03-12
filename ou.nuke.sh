@@ -17,6 +17,7 @@ for ACCOUNT_ID in $ACCOUNTS; do
 cat << EOF > $ACCOUNT_ID.nuke.yml
 ---
 regions:
+  - "us-east-1"
   - "us-east-2"
   - "global"
 account-blacklist:
