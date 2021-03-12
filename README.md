@@ -10,11 +10,11 @@ make account
 
 ## setup ou with new aws accounts
 
-make ou
 make ou-setup
 
 ## remove resources from aws accounts
 
 make ou-nuke
-make ou-delete
 
+
+TODO: README

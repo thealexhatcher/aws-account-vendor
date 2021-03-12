@@ -8,7 +8,7 @@
             "Condition": {
                 "StringNotEquals": {
                     "aws:RequestedRegion": [
-                        "us-east-1"
+                        "us-east-2"
                     ]
                 },
                 "ArnNotLike": {
